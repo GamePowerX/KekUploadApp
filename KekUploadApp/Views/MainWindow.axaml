@@ -1,0 +1,56 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:KekUploadApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="450"
+        x:Class="KekUploadApp.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="KekUploadApp">
+    
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <Window.Styles>
+        <Style Selector="TextBlock.red">
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+        <Style Selector="TextBlock.green">
+            <Setter Property="Foreground" Value="Green"/>
+        </Style>
+    </Window.Styles>
+    
+    <StackPanel>
+        <TextBlock Name="ErrorTextBlock" IsVisible="False" Classes="red"></TextBlock>
+        <TextBlock Name="StatusTextBlock" IsVisible="False" Classes="green"></TextBlock>
+        <StackPanel IsVisible="False" Name="UploadPanel">
+            <TextBlock>Upload Menu</TextBlock>
+            <TextBlock>Api Base Url:</TextBlock>
+            <TextBox Name="ApiUrlTextBox"></TextBox>
+            <TextBlock>File Path:</TextBlock>
+            <TextBox Name="FilePathTextBox"></TextBox>
+            <CheckBox Name="WithNameCheckBox" IsChecked="True">Upload File with Name</CheckBox>
+            <WrapPanel>
+                <Button Name="UploadButton" Command="{Binding OnUploadButtonClicked}">Upload</Button>
+                <Button Name="CancelButton" Command="{Binding OnUploadCancelButtonClicked}">Cancel</Button>
+            </WrapPanel>
+            <StackPanel Name="UploadStatusPanel" IsVisible="False">
+                <WrapPanel>
+                    <TextBlock Name="PercentTextBlock">0%</TextBlock>
+                    <TextBlock Name="ChunkCountTextBlock">0/0 Chunks completed</TextBlock>
+                </WrapPanel>
+                <ProgressBar Name="UploadProgressBar" Maximum="100"/>
+                <WrapPanel Name="ResultPanel" IsVisible="False">
+                    <TextBox Name="ResultTextBox" IsReadOnly="True"></TextBox>
+                    <Button Name="CopyButton" Command="{Binding OnCopyButtonClicked}">Copy</Button>
+                </WrapPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Name="MenuPanel">
+            <Button Name="UploadMenuButton" Command="{Binding OnUploadMenuButtonClicked}">Upload a File</Button>
+            <Button Name="DownloadButton">Download a File</Button>
+        </StackPanel>
+    </StackPanel>
+
+</Window>
