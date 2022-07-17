@@ -52,15 +52,15 @@ jobs:
       matrix:
         include:
         - os: ubuntu-latest
-          build: dotnet publish -c release -r linux-x64 -p:PublishSingleFile=true --self-contained true
+          build: dotnet publish -c release -r linux-x64 -p:PublishSingleFile=true --self-contained true --verbosity Normal -p:PublishTrimmed=True -p:EnableCompressionInSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
           filemap: |
             KekUploadApp/bin/Release/net6.0/linux-x64/publish/KekUploadApp>KekUploadApp-linux-amd64
         - os: windows-latest
-          build: dotnet publish -c release -r win-x64 -p:PublishSingleFile=true --self-contained true
+          build: dotnet publish -c release -r win-x64 -p:PublishSingleFile=true --self-contained true --verbosity Normal -p:PublishTrimmed=True -p:EnableCompressionInSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
           filemap: |
             KekUploadApp/bin/Release/net6.0/win-x64/publish/KekUploadApp.exe>KekUploadApp-windows-amd64.exe
         - os: macos-latest
-          build: dotnet publish -c release -r osx-x64 -p:PublishSingleFile=true --self-contained true
+          build: dotnet publish -c release -r osx-x64 -p:PublishSingleFile=true --self-contained true --verbosity Normal -p:PublishTrimmed=True -p:EnableCompressionInSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
           filemap: |
             KekUploadApp/bin/Release/net6.0/osx-x64/publish/KekUploadApp>KekUploadApp-macos-amd64
     steps:
