@@ -27,9 +27,16 @@
         <StackPanel IsVisible="False" Name="UploadPanel">
             <TextBlock>Upload Menu</TextBlock>
             <TextBlock>Api Base Url:</TextBlock>
-            <TextBox Name="ApiUrlTextBox"></TextBox>
+            <WrapPanel>
+                <TextBox Name="ApiUrlTextBox" Width="200"></TextBox>
+                <Button Name="BrowseInstancesButton" Command="{Binding OnBrowseInstancesButtonClicked}">Browse...</Button>
+            </WrapPanel>
             <TextBlock>File Path:</TextBlock>
-            <TextBox Name="FilePathTextBox"></TextBox>
+            <WrapPanel>
+                <TextBox Name="FilePathTextBox" Width="200"></TextBox>
+                <Button Name="BrowseButton" Content="Browse" Click="BrowseButtonClicked"/>
+            </WrapPanel>
+            
             <CheckBox Name="WithNameCheckBox" IsChecked="True">Upload File with Name</CheckBox>
             <WrapPanel>
                 <Button Name="UploadButton" Command="{Binding OnUploadButtonClicked}">Upload</Button>
@@ -37,7 +44,7 @@
             </WrapPanel>
             <StackPanel Name="UploadStatusPanel" IsVisible="False">
                 <WrapPanel>
-                    <TextBlock Name="PercentTextBlock">0%</TextBlock>
+                    <TextBlock Name="PercentTextBlock">0%    </TextBlock>
                     <TextBlock Name="ChunkCountTextBlock">0/0 Chunks completed</TextBlock>
                 </WrapPanel>
                 <ProgressBar Name="UploadProgressBar" Maximum="100"/>

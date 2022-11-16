@@ -11,10 +11,12 @@ namespace KekUploadApp.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public float UploadProgress
+        public float UploadProgress { get; set; }
+
+        public void OnBrowseInstancesButtonClicked()
         {
-            get;
-            set;
+            var instance = MainWindow.Instance!;
+            
         }
 
         public void OnUploadCancelButtonClicked()
