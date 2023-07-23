@@ -10,31 +10,31 @@
         Padding="20"
         x:DataType="kekUploadApp:MainWindowViewModel">
     <!-- TODO: Replace with own icon -->
-    
+
     <Design.DataContext>
-        <kekUploadApp:MainWindowViewModel/>
+        <kekUploadApp:MainWindowViewModel />
     </Design.DataContext>
-    
+
     <Window.Styles>
         <Style Selector="TextBlock.red">
-            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Foreground" Value="Red" />
         </Style>
         <Style Selector="TextBlock.green">
-            <Setter Property="Foreground" Value="Green"/>
+            <Setter Property="Foreground" Value="Green" />
         </Style>
     </Window.Styles>
-    
+
     <StackPanel>
-        <TextBlock Name="ErrorTextBlock" IsVisible="False" Classes="red"></TextBlock>
-        <TextBlock Name="StatusTextBlock" IsVisible="False" Classes="green"></TextBlock>
+        <TextBlock Name="ErrorTextBlock" IsVisible="False" Classes="red" />
+        <TextBlock Name="StatusTextBlock" IsVisible="False" Classes="green" />
         <StackPanel IsVisible="False" Name="UploadPanel">
             <TextBlock>Upload Menu</TextBlock>
             <TextBlock>Api Base Url:</TextBlock>
-            <TextBox Name="UploadApiUrlTextBox"></TextBox>
+            <TextBox Name="UploadApiUrlTextBox" />
             <TextBlock>File Path:</TextBlock>
             <WrapPanel>
-                <TextBox Name="UploadFilePathTextBox" MinWidth="200"></TextBox>
-                <Button Name="UploadBrowseButton" Content="..." Command="{Binding OnUploadBrowseButtonClicked}"></Button>
+                <TextBox Name="UploadFilePathTextBox" MinWidth="200" />
+                <Button Name="UploadBrowseButton" Content="..." Command="{Binding OnUploadBrowseButtonClicked}" />
             </WrapPanel>
             <CheckBox Name="WithNameCheckBox" IsChecked="True">Upload File with Name</CheckBox>
             <WrapPanel>
@@ -46,9 +46,9 @@
                     <TextBlock Name="UploadPercentTextBlock">0%</TextBlock>
                     <TextBlock Name="ChunkCountTextBlock">0/0 Chunks completed</TextBlock>
                 </WrapPanel>
-                <ProgressBar Name="UploadProgressBar" Maximum="100"/>
+                <ProgressBar Name="UploadProgressBar" Maximum="100" />
                 <WrapPanel Name="ResultPanel" IsVisible="False">
-                    <TextBox Name="ResultTextBox" IsReadOnly="True"></TextBox>
+                    <TextBox Name="ResultTextBox" IsReadOnly="True" />
                     <Button Name="CopyButton" Command="{Binding OnCopyButtonClicked}">Copy</Button>
                 </WrapPanel>
             </StackPanel>
@@ -57,16 +57,20 @@
             <TextBlock>Download Menu</TextBlock>
             <TextBlock>Download Url (ApiBaseUrl + DownloadId):</TextBlock>
             <WrapPanel>
-                <TextBox Name="DownloadApiBaseUrl" MinWidth="105" PastingFromClipboard="DownloadApiBaseUrl_OnPastingFromClipboard"></TextBox>
+                <TextBox Name="DownloadApiBaseUrl" MinWidth="105"
+                         PastingFromClipboard="DownloadApiBaseUrl_OnPastingFromClipboard" />
                 <TextBlock>/d/</TextBlock>
-                <TextBox Name="DownloadId" MinWidth="105"></TextBox>
+                <TextBox Name="DownloadId" MinWidth="105" />
             </WrapPanel>
             <TextBlock Name="DownloadFilePathTextBlock">File Path:</TextBlock>
             <WrapPanel>
-                <TextBox Name="DownloadFilePathTextBox" MinWidth="200"></TextBox>
+                <TextBox Name="DownloadFilePathTextBox" MinWidth="200" />
                 <Button Name="DownloadBrowseButton" Command="{Binding OnDownloadBrowseButtonClicked}">...</Button>
             </WrapPanel>
-            <CheckBox Name="AutoDetectNameCheckBox" IsChecked="False" IsCheckedChanged="AutoDetectNameCheckBox_OnIsCheckedChanged">Automatically detect the Name of the File</CheckBox>
+            <CheckBox Name="AutoDetectNameCheckBox" IsChecked="False"
+                      IsCheckedChanged="AutoDetectNameCheckBox_OnIsCheckedChanged">
+                Automatically detect the Name of the File
+            </CheckBox>
             <WrapPanel>
                 <Button Name="StartDownloadButton" Command="{Binding OnStartDownloadButtonClicked}">Download</Button>
                 <Button Name="DownloadCancelButton" Command="{Binding OnDownloadCancelButtonClicked}">Cancel</Button>
@@ -76,9 +80,9 @@
                     <TextBlock Name="DownloadPercentTextBlock">0%</TextBlock>
                     <TextBlock Name="DownloadProgressTextBlock">0/0 Bytes downloaded</TextBlock>
                 </WrapPanel>
-                <ProgressBar Name="DownloadProgressBar" Maximum="100"/>
+                <ProgressBar Name="DownloadProgressBar" Maximum="100" />
                 <WrapPanel Name="DownloadResultPanel" IsVisible="False">
-                    <TextBox Name="DownloadResultTextBox" IsReadOnly="True"></TextBox>
+                    <TextBox Name="DownloadResultTextBox" IsReadOnly="True" />
                     <Button Name="DownloadLocationCopyButton" Command="{Binding OnCopyButtonClicked}">Copy</Button>
                 </WrapPanel>
             </StackPanel>
