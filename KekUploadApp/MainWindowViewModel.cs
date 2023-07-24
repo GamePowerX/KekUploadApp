@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading;
 using Avalonia.Platform.Storage;
 using Avalonia.Threading;
@@ -243,11 +244,12 @@ public class MainWindowViewModel
     public async void OnUploadBrowseButtonClicked()
     {
         var instance = MainWindow.Instance!;
+        var path = instance.UploadFilePathTextBox.Text;
         var result = await instance.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
             AllowMultiple = false,
             SuggestedStartLocation = await instance.StorageProvider.TryGetFolderFromPathAsync(
-                Directory.GetParent(instance.UploadFilePathTextBox.Text ?? Environment.CurrentDirectory)?.FullName ??
+                Directory.GetParent(string.IsNullOrEmpty(path) ? Assembly.GetExecutingAssembly().Location : path)?.FullName ??
                 Environment.CurrentDirectory),
             Title = "Select a file to upload"
         });

@@ -62,15 +62,15 @@
                 <TextBlock>/d/</TextBlock>
                 <TextBox Name="DownloadId" MinWidth="105" />
             </WrapPanel>
+            <CheckBox Name="AutoDetectNameCheckBox" IsChecked="False"
+                      IsCheckedChanged="AutoDetectNameCheckBox_OnIsCheckedChanged">
+                Automatically detect the Name of the File
+            </CheckBox>
             <TextBlock Name="DownloadFilePathTextBlock">File Path:</TextBlock>
             <WrapPanel>
                 <TextBox Name="DownloadFilePathTextBox" MinWidth="200" />
                 <Button Name="DownloadBrowseButton" Command="{Binding OnDownloadBrowseButtonClicked}">...</Button>
             </WrapPanel>
-            <CheckBox Name="AutoDetectNameCheckBox" IsChecked="False"
-                      IsCheckedChanged="AutoDetectNameCheckBox_OnIsCheckedChanged">
-                Automatically detect the Name of the File
-            </CheckBox>
             <WrapPanel>
                 <Button Name="StartDownloadButton" Command="{Binding OnStartDownloadButtonClicked}">Download</Button>
                 <Button Name="DownloadCancelButton" Command="{Binding OnDownloadCancelButtonClicked}">Cancel</Button>
