@@ -245,12 +245,15 @@ public class MainWindowViewModel
     {
         var instance = MainWindow.Instance!;
         var path = instance.UploadFilePathTextBox.Text;
+        var next = Assembly.GetExecutingAssembly().Location;
+        if(string.IsNullOrEmpty(next)) next = Environment.CurrentDirectory;
+        var suggestedPath =  Directory.GetParent(string.IsNullOrEmpty(path) ? next  : path)?.FullName ??
+                             Environment.CurrentDirectory;
+        if(string.IsNullOrEmpty(suggestedPath)) suggestedPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         var result = await instance.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
             AllowMultiple = false,
-            SuggestedStartLocation = await instance.StorageProvider.TryGetFolderFromPathAsync(
-                Directory.GetParent(string.IsNullOrEmpty(path) ? Assembly.GetExecutingAssembly().Location : path)?.FullName ??
-                Environment.CurrentDirectory),
+            SuggestedStartLocation = await instance.StorageProvider.TryGetFolderFromPathAsync(suggestedPath),
             Title = "Select a file to upload"
         });
         if (result.Count <= 0) return;
